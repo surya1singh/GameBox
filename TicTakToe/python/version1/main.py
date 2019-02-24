@@ -1,13 +1,26 @@
 from TicTacToe import Board
 
-
 def main():
-    # set user user name
-    # set board
+    user1 = input('Enter first user name ')
+    if not user1:
+        user1 = 'Player 1'
+    user2 = input('Enter second user name ')
+    if not user2:
+        user2 = 'Player 2'
+    board = Board()
 
-    # ask for user1 for input position
-    # check if user wins or not
-    # ask for user2 for input position
-    # check if user wins or not
-    # repeat this loop until any player wins or there is now input left to fill
-    
+    while not board.is_full() :
+        board.print_user_prompt(user1, 'X')
+        board.print_the_board()
+        if board.check_win('X'):
+            break
+
+        board.print_user_prompt(user2, 'O')
+        board.print_the_board()
+        if board.check_win('O'):
+            break
+    else:
+        print("game tie!")
+
+if __name__ == '__main__':
+    main()
